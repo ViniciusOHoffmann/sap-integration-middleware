@@ -25,6 +25,8 @@ async_engine = create_async_engine(
     DATABASE_URL,
     echo=False,
     future=True,
+    pool_pre_ping=True,
+    pool_recycle=60,
     connect_args={"sslmode": "require"} if "neon.tech" in DATABASE_URL else {}
 )
 

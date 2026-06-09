@@ -1,0 +1,9 @@
+POST http://localhost:8000/webhook/contract-signed
+Content-Type: application/json
+
+{
+    "contract_ref": "c4b1a829-9dc4-4d1a-8533-87a1122a2026",
+    "customer_id": "CUST-9901",
+    "amount": 1500.50,
+    "company_code": "BR01"
+}
