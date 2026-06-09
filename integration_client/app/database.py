@@ -3,7 +3,10 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import sessionmaker
 from typing import AsyncGenerator
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Busca a string que eu coloquei no arquivo .env, caso ele não encontrar, usa-se um fallback local
 RAW_DATABASE_URL = os.getenv(
