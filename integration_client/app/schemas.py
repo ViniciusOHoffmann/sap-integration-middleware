@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 """
@@ -12,9 +12,9 @@ class ContractSignedWebhook(BaseModel):
     contract_ref: str = Field(..., description="ID do contrato assinado")
     customer_id: str = Field(..., description="ID do cliente relacionado")
     amount: float = Field(..., gt=0, description="Valor do faturamento")
-    company_code: str = Field("BR01", max_length=4, max_digits=4)
+    company_code: str = Field("BR01", min_length=4, max_length=4, description="Código da empresa no SAP")
 
-    class Config:
+    model_config = ConfigDict(
         json_schema_extra = {
             "example": {
                 "contract_ref": "c4b1a829-9dc4-4d1a-8533-87a1122a2026",
@@ -23,3 +23,4 @@ class ContractSignedWebhook(BaseModel):
                 "company_code": "BR01"
             }
         }
+    )
